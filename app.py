@@ -439,9 +439,10 @@ st.markdown(
 }
 
 
-[data-testid="stRadio"] label {
+[data-testid="stRadio"] div[role="radiogroup"] label p {
     color: #ffffff !important;
 }
+
 
 [data-testid="stTextInput"] label {
     color: #ffffff !important;
