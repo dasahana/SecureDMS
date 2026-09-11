@@ -1,8 +1,3 @@
-# ============================================================
-# SecureDMS
-# Main Application
-# ============================================================
-
 import os
 import re
 import smtplib
@@ -74,6 +69,21 @@ def seed_demo_professionals():
             "Demo Investigator 02",
         ),
         (
+            "INV-2026-003",
+            "INVESTIGATOR",
+            "Demo Investigator 03",
+        ),
+        (
+            "INV-2026-004",
+            "INVESTIGATOR",
+            "Demo Investigator 04",
+        ),
+        (
+            "INV-2026-005",
+            "INVESTIGATOR",
+            "Demo Investigator 05",
+         ),
+        (
             "LAW-2026-001",
             "LAWYER",
             "Demo Lawyer 01",
@@ -82,6 +92,21 @@ def seed_demo_professionals():
             "LAW-2026-002",
             "LAWYER",
             "Demo Lawyer 02",
+        ),
+        (
+            "LAW-2026-003",
+            "LAWYER",
+            "Demo Lawyer 03",
+        ),
+        (
+            "LAW-2026-004",
+            "LAWYER",
+            "Demo Lawyer 04",
+        ),
+        (
+            "LAW-2026-005",
+            "LAWYER",
+            "Demo Lawyer 05",
         ),
     ]
 
@@ -427,6 +452,10 @@ hr {
 
 footer {
     visibility: hidden;
+}
+
+[data-testid="stHeader"] {
+    display: none;
 }
 
 </style>
