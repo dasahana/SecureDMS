@@ -428,6 +428,10 @@ st.markdown(
     font-weight: 700;
 }
 
+[data-testid="stRadio"] label {
+    color: #ffffff !important;
+}
+
 
 /* ==========================================================
    DIVIDER
