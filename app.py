@@ -432,6 +432,21 @@ st.markdown(
     color: #ffffff !important;
 }
 
+.stButton > button {
+    border-radius: 9px;
+    min-height: 42px;
+    font-weight: 700;
+}
+
+
+[data-testid="stRadio"] label {
+    color: #ffffff !important;
+}
+
+[data-testid="stTextInput"] label {
+    color: #ffffff !important;
+}
+
 
 /* ==========================================================
    DIVIDER
