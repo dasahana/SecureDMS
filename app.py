@@ -448,6 +448,18 @@ st.markdown(
     color: #ffffff !important;
 }
 
+[data-testid="stSelectbox"] label {
+    color: #ffffff !important;
+}
+
+[data-testid="stSelectbox"] div[data-baseweb="select"] * {
+    color: #ffffff !important;
+}
+
+.stCaption {
+    color: #ffffff !important;
+}
+
 
 /* ==========================================================
    DIVIDER
