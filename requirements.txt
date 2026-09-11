@@ -1,0 +1,5 @@
+streamlit
+bcrypt
+cryptography
+pandas
+openpyxl
