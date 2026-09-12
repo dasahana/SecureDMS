@@ -1,20 +1,51 @@
 from pathlib import Path
+import os
 from cryptography.fernet import Fernet
 
-# SecureDMS encryption configuration
+try:
+    import streamlit as st
+except ImportError:
+    st = None
+
 BASE_DIR = Path(__file__).resolve().parent
 KEY_FILE = BASE_DIR / "encryption.key"
 ENCRYPTED_FOLDER = BASE_DIR / "secure_storage"
 
 
 def get_encryption_key():
-    """Load the existing Fernet key or create it for a new installation.
+    # Streamlit Cloud secret
+    cloud_key = None
+    if st is not None:
+        try:
+            cloud_key = st.secrets.get("ENCRYPTION_KEY")
+        except Exception:
+            cloud_key = None
 
-    Never replace an existing key when encrypted documents are present.
-    """
+    # Optional environment variable fallback
+    if not cloud_key:
+        cloud_key = os.getenv("ENCRYPTION_KEY")
+
+    if cloud_key:
+        if isinstance(cloud_key, str):
+            cloud_key = cloud_key.strip().encode("utf-8")
+        try:
+            Fernet(cloud_key)
+        except Exception as error:
+            raise RuntimeError(
+                f"ENCRYPTION_KEY in Streamlit Secrets is invalid: {error}"
+            )
+        return cloud_key
+
+    # Local development
     if KEY_FILE.exists():
-        return KEY_FILE.read_bytes()
+        key = KEY_FILE.read_bytes().strip()
+        try:
+            Fernet(key)
+        except Exception as error:
+            raise RuntimeError(f"Local encryption.key is invalid: {error}")
+        return key
 
+    # New local installation only
     if ENCRYPTED_FOLDER.exists() and any(ENCRYPTED_FOLDER.iterdir()):
         raise RuntimeError(
             "encryption.key is missing while encrypted documents exist. "
@@ -31,32 +62,20 @@ def get_fernet():
 
 
 def encrypt_file(file_bytes, output_path):
-    """Encrypt plaintext bytes and write the encrypted result to output_path."""
-    # Accept bytearray/memoryview as well as bytes.
     if isinstance(file_bytes, (bytearray, memoryview)):
         file_bytes = bytes(file_bytes)
-
     if not isinstance(file_bytes, bytes):
-        raise TypeError(
-            "encrypt_file() expects plaintext bytes as the first argument."
-        )
-
-    # Normalize Path/string only for the output path.
+        raise TypeError("encrypt_file() expects plaintext bytes as the first argument.")
     output_path = Path(output_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
-
-    encrypted = get_fernet().encrypt(file_bytes)
-    output_path.write_bytes(encrypted)
+    output_path.write_bytes(get_fernet().encrypt(file_bytes))
 
 
 def decrypt_file(encrypted_path):
-    """Read an encrypted file and return decrypted bytes."""
     encrypted_path = Path(encrypted_path)
-    encrypted_bytes = encrypted_path.read_bytes()
-    return get_fernet().decrypt(encrypted_bytes)
+    return get_fernet().decrypt(encrypted_path.read_bytes())
 
 
-# Compatibility helpers used by older SecureDMS modules.
 def ensure_storage_directory():
     ENCRYPTED_FOLDER.mkdir(parents=True, exist_ok=True)
     return ENCRYPTED_FOLDER
@@ -102,4 +121,11 @@ def delete_encrypted_file(filename):
 
 
 def encryption_key_exists():
-    return KEY_FILE.exists()
+    try:
+        return bool(
+            (st is not None and st.secrets.get("ENCRYPTION_KEY"))
+            or os.getenv("ENCRYPTION_KEY")
+            or KEY_FILE.exists()
+        )
+    except Exception:
+        return bool(os.getenv("ENCRYPTION_KEY") or KEY_FILE.exists())
