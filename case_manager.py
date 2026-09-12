@@ -196,6 +196,23 @@ def load_case_css():
          border-color: #45c8ff !important;
         }
 
+        .stTabs [data-baseweb="tab"] {
+        color: #f5f7fa !important;
+        }
+
+        .stTabs [data-baseweb="tab"] {
+        color: #f5f7fa !important;
+        font-weight: 600 !important;
+        }
+
+        .stTabs [data-baseweb="tab"]:hover {
+        color: #45c8ff !important;
+        }
+
+        .stTabs [aria-selected="true"] {
+        color: #ff4b4b !important;
+        }
+
         </style>
         """))
 
