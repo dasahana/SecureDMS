@@ -183,67 +183,144 @@ def load_case_css():
             margin-bottom: 15px;
         }
 
-        .stButton > button {
-         background-color: #0d1b2d !important;
-         color: #f5f7fa !important;
-         border: 1px solid #1a3047 !important;
-         border-radius: 10px !important;
-        }
-
-        .stButton > button:hover {
-         background-color: #162b42 !important;
-         color: #45c8ff !important;
-         border-color: #45c8ff !important;
-        }
-
         
-.stButton > button {
+
+/* ============================================================
+   SECURE DMS DARK FORM / BUTTON THEME
+   ============================================================ */
+
+.stTextInput input,
+.stTextArea textarea,
+.stNumberInput input {
     background-color: #0d1b2d !important;
     color: #f5f7fa !important;
-    border: 1px solid #1a3047 !important;
+    -webkit-text-fill-color: #f5f7fa !important;
+    border: 1px solid #29445f !important;
     border-radius: 10px !important;
+}
+
+.stTextInput input::placeholder,
+.stTextArea textarea::placeholder,
+.stNumberInput input::placeholder {
+    color: #91a2b7 !important;
+    -webkit-text-fill-color: #91a2b7 !important;
+    opacity: 1 !important;
+}
+
+.stTextInput label,
+.stTextArea label,
+.stNumberInput label,
+.stSelectbox label,
+.stMultiSelect label,
+.stFileUploader label,
+.stDateInput label,
+.stTimeInput label {
+    color: #f5f7fa !important;
     font-weight: 600 !important;
 }
 
-/* BUTTON HOVER */
-.stButton > button:hover {
-    background-color: #162b42 !important;
-    color: #45c8ff !important;
-    border-color: #45c8ff !important;
+.stSelectbox [data-baseweb="select"] > div,
+.stMultiSelect [data-baseweb="select"] > div {
+    background-color: #0d1b2d !important;
+    color: #f5f7fa !important;
+    border-color: #29445f !important;
 }
 
-/* BUTTON TEXT */
-.stButton > button p {
+.stSelectbox [data-baseweb="select"] span,
+.stMultiSelect [data-baseweb="select"] span {
     color: #f5f7fa !important;
 }
 
-/* BUTTON TEXT ON HOVER */
-.stButton > button:hover p {
-    color: #45c8ff !important;
+.stButton > button,
+.stFormSubmitButton > button {
+    background-color: #0d1b2d !important;
+    color: #f5f7fa !important;
+    -webkit-text-fill-color: #f5f7fa !important;
+    border: 1px solid #29445f !important;
+    border-radius: 10px !important;
+    min-height: 42px !important;
+    font-weight: 700 !important;
+    box-shadow: none !important;
 }
 
-/* DASHBOARD TABS */
+.stButton > button p,
+.stButton > button span,
+.stFormSubmitButton > button p,
+.stFormSubmitButton > button span {
+    color: #f5f7fa !important;
+    -webkit-text-fill-color: #f5f7fa !important;
+}
+
+.stButton > button:hover,
+.stFormSubmitButton > button:hover {
+    background-color: #162b42 !important;
+    color: #45c8ff !important;
+    -webkit-text-fill-color: #45c8ff !important;
+    border-color: #45c8ff !important;
+}
+
+.stButton > button:hover p,
+.stButton > button:hover span,
+.stFormSubmitButton > button:hover p,
+.stFormSubmitButton > button:hover span {
+    color: #45c8ff !important;
+    -webkit-text-fill-color: #45c8ff !important;
+}
+
+.stCheckbox label,
+.stCheckbox label p,
+.stCheckbox label span {
+    color: #f5f7fa !important;
+    -webkit-text-fill-color: #f5f7fa !important;
+    font-weight: 600 !important;
+}
+
 .stTabs [data-baseweb="tab"] {
     color: #f5f7fa !important;
     opacity: 1 !important;
 }
 
-.stTabs [data-baseweb="tab"] p {
+.stTabs [data-baseweb="tab"] p,
+.stTabs [data-baseweb="tab"] span {
     color: #f5f7fa !important;
+    -webkit-text-fill-color: #f5f7fa !important;
     opacity: 1 !important;
     font-weight: 600 !important;
 }
 
-.stTabs [data-baseweb="tab"]:hover p {
+.stTabs [data-baseweb="tab"]:hover p,
+.stTabs [data-baseweb="tab"]:hover span {
     color: #45c8ff !important;
+    -webkit-text-fill-color: #45c8ff !important;
 }
 
-.stTabs [data-baseweb="tab"][aria-selected="true"] p {
+.stTabs [data-baseweb="tab"][aria-selected="true"] p,
+.stTabs [data-baseweb="tab"][aria-selected="true"] span {
     color: #45c8ff !important;
+    -webkit-text-fill-color: #45c8ff !important;
     font-weight: 700 !important;
 }
 
-        </style>
+.stMarkdown p,
+[data-testid="stCaptionContainer"] p {
+    color: #d9e2ec !important;
+}
+
+[data-testid="stFileUploader"] section {
+    background-color: #0d1b2d !important;
+    border: 1px dashed #29445f !important;
+}
+
+[data-testid="stFileUploader"] section *,
+[data-testid="stFileUploader"] label {
+    color: #f5f7fa !important;
+}
+
+[data-testid="stForm"] {
+    border-color: #1a3047 !important;
+}
+
+</style>
         """))
 
 
