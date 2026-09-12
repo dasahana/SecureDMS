@@ -183,6 +183,19 @@ def load_case_css():
             margin-bottom: 15px;
         }
 
+        .stButton > button {
+         background-color: #0d1b2d !important;
+         color: #f5f7fa !important;
+         border: 1px solid #1a3047 !important;
+         border-radius: 10px !important;
+        }
+
+        .stButton > button:hover {
+         background-color: #162b42 !important;
+         color: #45c8ff !important;
+         border-color: #45c8ff !important;
+        }
+
         </style>
         """))
 
