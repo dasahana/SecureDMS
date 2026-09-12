@@ -27,6 +27,37 @@ from database import (
 
 from dashboard import show_dashboard
 
+import os
+import sqlite3
+
+if st.button("RESET DATABASE"):
+    db_path = "securedms.db"
+
+    if os.path.exists(db_path):
+        conn = sqlite3.connect(db_path)
+        tables = [
+            "audit_logs",
+            "permissions",
+            "documents",
+            "case_applications",
+            "case_members",
+            "cases",
+            "otp_verifications",
+            "users"
+        ]
+
+        for table in tables:
+            try:
+                conn.execute(f"DELETE FROM {table}")
+            except sqlite3.OperationalError:
+                pass
+
+        conn.commit()
+        conn.close()
+
+    st.success("Database cleared successfully!")
+    st.stop()
+
 
 # ============================================================
 # PAGE CONFIG
