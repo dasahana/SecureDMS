@@ -196,25 +196,52 @@ def load_case_css():
          border-color: #45c8ff !important;
         }
 
-        .stTabs [data-baseweb="tab"] {
-        color: #f5f7fa !important;
-        opacity: 1 !important;
-        }
+        
+.stButton > button {
+    background-color: #0d1b2d !important;
+    color: #f5f7fa !important;
+    border: 1px solid #1a3047 !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+}
 
-        .stTabs [data-baseweb="tab"] p {
-        color: #f5f7fa !important;
-        opacity: 1 !important;
-        font-weight: 600 !important;
-        }
+/* BUTTON HOVER */
+.stButton > button:hover {
+    background-color: #162b42 !important;
+    color: #45c8ff !important;
+    border-color: #45c8ff !important;
+}
 
-        .stTabs [data-baseweb="tab"]:hover p {
-        color: #45c8ff !important;
-        }
+/* BUTTON TEXT */
+.stButton > button p {
+    color: #f5f7fa !important;
+}
 
-        .stTabs [data-baseweb="tab"][aria-selected="true"] p {
-        color: #ff4b4b !important;
-        font-weight: 700 !important;
-        }
+/* BUTTON TEXT ON HOVER */
+.stButton > button:hover p {
+    color: #45c8ff !important;
+}
+
+/* DASHBOARD TABS */
+.stTabs [data-baseweb="tab"] {
+    color: #f5f7fa !important;
+    opacity: 1 !important;
+}
+
+.stTabs [data-baseweb="tab"] p {
+    color: #f5f7fa !important;
+    opacity: 1 !important;
+    font-weight: 600 !important;
+}
+
+.stTabs [data-baseweb="tab"]:hover p {
+    color: #45c8ff !important;
+}
+
+.stTabs [data-baseweb="tab"][aria-selected="true"] p {
+    color: #45c8ff !important;
+    font-weight: 700 !important;
+}
 
         </style>
         """))
